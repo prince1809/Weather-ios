@@ -19,7 +19,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     let locationManager = CLLocationManager()
     let weatherDataModel = WeatherDataModel()
-
+    
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempratureLabel: UILabel!
@@ -65,7 +65,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     
     func updateUIWithWeatherData() {
         cityLabel.text = weatherDataModel.city
-        tempratureLabel.text = "\(weatherDataModel.temperature)"
+        tempratureLabel.text = "\(weatherDataModel.temperature)°"
         weatherIcon.image = UIImage(named: weatherDataModel.weatherIconName)
     }
     
@@ -98,7 +98,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     }
     
     func userEnteredANewCityName(city: String) {
-        print(city)
+        let params : [String: String] = ["q":city, "appid": APP_ID]
+        getWeatherData(url: WEATHER_URL, parameters: params)
+        //print(city)
     }
     
 }
