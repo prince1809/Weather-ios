@@ -29,7 +29,7 @@
                                 </constraints>
                                 <state key="normal" image="switch"/>
                                 <connections>
-                                    <segue destination="dro-f4-hvG" kind="presentation" id="Rvn-mo-AZb"/>
+                                    <segue destination="dro-f4-hvG" kind="presentation" identifier="changeCityName" id="Rvn-mo-AZb"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp2-2d-Mwx" userLabel="Container View">
@@ -85,6 +85,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cityLabel" destination="2k8-hC-Sqh" id="NfH-t9-NzL"/>
+                        <outlet property="tempratureLabel" destination="HBQ-m5-g1H" id="Tdq-q5-XG7"/>
+                        <outlet property="weatherIcon" destination="od6-dF-3Hn" id="kRh-9k-CV1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -115,34 +120,38 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter City Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJP-Om-x8W" userLabel="City Name Text Field">
-                                        <rect key="frame" x="72" y="127" width="231" height="40"/>
+                                        <rect key="frame" x="72" y="142" width="231" height="40"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="cvU-Ra-ow5"/>
                                             <constraint firstAttribute="height" constant="40" id="hKi-Kl-sOo"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Weather" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbU-1n-EVH" userLabel="Get Weather Button">
-                                        <rect key="frame" x="12" y="197" width="351" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="Xwl-v4-PWV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                        <color key="textColor" red="1" green="0.99997437" blue="0.99999129769999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYv-de-JUk">
+                                        <rect key="frame" x="72" y="198" width="231" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <state key="normal" title="Get Weather">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="getWeatherButtonPressed:" destination="dro-f4-hvG" eventType="touchUpInside" id="7Yi-Ex-5Nf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ZbU-1n-EVH" firstAttribute="leading" secondItem="65w-eO-3ta" secondAttribute="leading" constant="12" id="39E-lR-VjN"/>
+                                    <constraint firstAttribute="trailing" secondItem="wJP-Om-x8W" secondAttribute="trailing" constant="72" id="0XB-QO-lS7"/>
+                                    <constraint firstItem="OYv-de-JUk" firstAttribute="top" secondItem="wJP-Om-x8W" secondAttribute="bottom" constant="16" id="18o-Gf-uIc"/>
                                     <constraint firstItem="wJP-Om-x8W" firstAttribute="leading" secondItem="65w-eO-3ta" secondAttribute="leading" constant="72" id="3eT-3x-AEf"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZbU-1n-EVH" secondAttribute="bottom" constant="8" id="COg-Tq-NxU"/>
                                     <constraint firstAttribute="height" constant="250" id="GbP-TI-l5L"/>
-                                    <constraint firstItem="ZbU-1n-EVH" firstAttribute="top" secondItem="wJP-Om-x8W" secondAttribute="bottom" constant="30" id="H7J-7m-qeb"/>
+                                    <constraint firstItem="wJP-Om-x8W" firstAttribute="leading" secondItem="65w-eO-3ta" secondAttribute="leading" constant="72" id="HiW-sI-kbp"/>
                                     <constraint firstItem="n0y-SL-U1V" firstAttribute="top" secondItem="65w-eO-3ta" secondAttribute="top" constant="8" id="L7j-ws-NX0"/>
                                     <constraint firstItem="n0y-SL-U1V" firstAttribute="leading" secondItem="65w-eO-3ta" secondAttribute="leading" constant="8" id="XaJ-z8-kbo"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZbU-1n-EVH" secondAttribute="trailing" constant="12" id="hya-d8-mRQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="OYv-de-JUk" secondAttribute="bottom" constant="8" id="e8j-za-Bdv"/>
+                                    <constraint firstItem="OYv-de-JUk" firstAttribute="leading" secondItem="65w-eO-3ta" secondAttribute="leading" constant="72" id="k6z-Uw-lRa"/>
                                     <constraint firstAttribute="trailing" secondItem="wJP-Om-x8W" secondAttribute="trailing" constant="72" id="n00-5z-Naz"/>
+                                    <constraint firstAttribute="trailing" secondItem="OYv-de-JUk" secondAttribute="trailing" constant="72" id="thX-bO-UMp"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -158,6 +167,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NI4-QJ-Ua5"/>
                     </view>
+                    <connections>
+                        <outlet property="changeCityTextField" destination="wJP-Om-x8W" id="PfF-3h-1sa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUR-wf-FnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
